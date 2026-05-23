@@ -7,7 +7,8 @@ import { Istd } from '../../models/student';
   styleUrls: ['./student-dashboard.component.scss']
 })
 export class StudentDashboardComponent implements OnInit {
-    stdArr: Array<Istd> = [
+
+  stdArr: Array<Istd> = [
     {
       fname: 'steve',
       lname: 'witkoff',
@@ -15,35 +16,17 @@ export class StudentDashboardComponent implements OnInit {
       contact: 1234567890,
       stdId: '121',
       isActive: true
-    },
-    {
-      fname: 'afric',
-      lname: 'dwan',
-      email: 'afric@gmail.com',
-      contact: 1234567890,
-      stdId: '122',
-      isActive: false
-    },
-    {
-      fname: 'swan',
-      lname: 'warn',
-      email: 'swan@gmail.com',
-      contact: 1234567890,
-      stdId: '123',
-      isActive: true
-    },
-    {
-      fname: 'frik',
-      lname: 'saam',
-      email: 'frik@gmail.com',
-      contact: 1234567890,
-      stdId: '124',
-      isActive: false
     }
-  ]
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onAddStudent(stdObj: Istd) {
+    stdObj.stdId = Math.random().toString();
+    this.stdArr.push(stdObj);
   }
 
 }

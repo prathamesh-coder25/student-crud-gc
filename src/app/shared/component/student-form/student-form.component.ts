@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-student-form',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentFormComponent implements OnInit {
 
+  @Output()emitStudent =new EventEmitter<any>();
+  @ViewChild('stdForm') stdForm!:NgForm;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+  onAddStudent(){
+    console.log('student Added Successfully');
+    this.emitStudent.emit(this.stdForm.value);
+    this.stdForm.reset()
   }
 
 }

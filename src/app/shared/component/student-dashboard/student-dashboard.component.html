@@ -1,7 +1,9 @@
 
 <div class="row">
     <div class="col-md-4">
-        <app-student-form></app-student-form>
+        <app-student-form
+            (emitStudent)="onAddStudent($event)">
+        </app-student-form>
     </div>
     <div class="col-md-8">
         <app-student-table
