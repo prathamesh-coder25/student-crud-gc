@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Istd } from '../../models/student';
+import { snackBarService } from '../../services/mat.service';
 
 @Component({
   selector: 'app-student-dashboard',
@@ -41,9 +42,13 @@ export class StudentDashboardComponent implements OnInit {
       isActive: false
     }
   ]
-  constructor() { }
+  constructor(private _snackBar : snackBarService) { }
 
   ngOnInit(): void {
   }
 
+ getRemoveId(id: string) {
+    let getIndex = this.stdArr.findIndex(s => s.stdId === id)
+    this.stdArr.splice(getIndex, 1)
+  }
 }

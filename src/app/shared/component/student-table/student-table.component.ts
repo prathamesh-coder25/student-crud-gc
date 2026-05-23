@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Istd } from '../../models/student';
 
 @Component({
@@ -8,6 +8,7 @@ import { Istd } from '../../models/student';
 })
 export class StudentTableComponent implements OnInit {
   @Input() getStds !: Array<Istd>
+@Output() emitRemoveId : EventEmitter<string>= new EventEmitter<string>()
 
   constructor() { }
 
@@ -17,5 +18,8 @@ export class StudentTableComponent implements OnInit {
    trackByFun(index: number, std: Istd){
     return std.stdId
   }
-  
+   onRemove(id: string){
+    console.log(id);
+    this.emitRemoveId.emit(id)
+  }
 }
