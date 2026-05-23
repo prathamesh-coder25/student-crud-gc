@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Istd } from '../../models/student';
+import { SnackBarService } from '../../services/snackbar.services';
 
 @Component({
   selector: 'app-student-dashboard',
@@ -7,7 +8,8 @@ import { Istd } from '../../models/student';
   styleUrls: ['./student-dashboard.component.scss']
 })
 export class StudentDashboardComponent implements OnInit {
-    stdArr: Array<Istd> = [
+
+  stdArr: Array<Istd> = [
     {
       fname: 'steve',
       lname: 'witkoff',
@@ -41,9 +43,19 @@ export class StudentDashboardComponent implements OnInit {
       isActive: false
     }
   ]
-  constructor() { }
+  
+
+  
+  constructor(
+    private _SnackBarService: SnackBarService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+   getNewStd(newStd: Istd) {
+    this.stdArr.push(newStd)
+    this._SnackBarService.openSnackBar(`The New Student ${newStd.fname} added Successfully !!!`)
   }
 
 }
