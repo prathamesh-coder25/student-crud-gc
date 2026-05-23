@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Istd } from '../../models/student';
 
 @Component({
@@ -8,6 +8,8 @@ import { Istd } from '../../models/student';
 })
 export class StudentTableComponent implements OnInit {
   @Input() getStds !: Array<Istd>
+  @Output() emitStdObj : EventEmitter<Istd> = new EventEmitter<Istd>()
+
 
   constructor() { }
 
@@ -18,4 +20,10 @@ export class StudentTableComponent implements OnInit {
     return std.stdId
   }
   
+
+  onStdEdit(editStd: Istd){
+    console.log(editStd);
+    this.emitStdObj.emit(editStd)
+    
+  }
 }

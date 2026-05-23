@@ -43,6 +43,8 @@ export class StudentDashboardComponent implements OnInit {
       isActive: false
     }
   ]
+
+  getEditStd !: Istd
   
 
   
@@ -53,9 +55,19 @@ export class StudentDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-   getNewStd(newStd: Istd) {
+
+    getNewStd(newStd: Istd) {
     this.stdArr.push(newStd)
     this._SnackBarService.openSnackBar(`The New Student ${newStd.fname} added Successfully !!!`)
   }
+
+     getEditObj(editOBj: Istd) {
+    this.getEditStd = editOBj
+  }
+
+  getUpdateStd(UpdateObj: Istd) {
+    let getIndex = this.stdArr.findIndex(s => s.stdId === UpdateObj.stdId)
+    this.stdArr[getIndex] = UpdateObj
+    }
 
 }

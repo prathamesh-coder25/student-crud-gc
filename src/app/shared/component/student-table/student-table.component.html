@@ -23,7 +23,8 @@
             <td>{{std.isActive? 'Yes': 'No'}}</td>
             <td>
                 <button
-               mat-mini-fab color="primary" class="mr-2">
+                 (click)="onStdEdit(std)"
+                mat-mini-fab color="primary" class="mr-2">
                     <mat-icon>edit</mat-icon>
                 </button>
             </td>
