@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Istd } from '../../models/student';
+import { SnackBarService } from '../../services/snackbar.services';
 
 @Component({
   selector: 'app-student-dashboard',
@@ -16,17 +17,45 @@ export class StudentDashboardComponent implements OnInit {
       contact: 1234567890,
       stdId: '121',
       isActive: true
+    },
+    {
+      fname: 'afric',
+      lname: 'dwan',
+      email: 'afric@gmail.com',
+      contact: 1234567890,
+      stdId: '122',
+      isActive: false
+    },
+    {
+      fname: 'swan',
+      lname: 'warn',
+      email: 'swan@gmail.com',
+      contact: 1234567890,
+      stdId: '123',
+      isActive: true
+    },
+    {
+      fname: 'frik',
+      lname: 'saam',
+      email: 'frik@gmail.com',
+      contact: 1234567890,
+      stdId: '124',
+      isActive: false
     }
-  ];
+  ]
+  
 
-  constructor() { }
+  
+  constructor(
+    private _SnackBarService: SnackBarService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  onAddStudent(stdObj: Istd) {
-    stdObj.stdId = Math.random().toString();
-    this.stdArr.push(stdObj);
+   getNewStd(newStd: Istd) {
+    this.stdArr.push(newStd)
+    this._SnackBarService.openSnackBar(`The New Student ${newStd.fname} added Successfully !!!`)
   }
 
 }
