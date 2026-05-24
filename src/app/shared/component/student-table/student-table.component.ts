@@ -8,6 +8,8 @@ import { Istd } from '../../models/student';
 })
 export class StudentTableComponent implements OnInit {
   @Input() getStds !: Array<Istd>
+  @Output() emitStdObj : EventEmitter<Istd> = new EventEmitter<Istd>()
+
 @Output() emitRemoveId : EventEmitter<string>= new EventEmitter<string>()
 
   constructor() { }
@@ -18,6 +20,12 @@ export class StudentTableComponent implements OnInit {
    trackByFun(index: number, std: Istd){
     return std.stdId
   }
+  
+
+  onStdEdit(editStd: Istd){
+    console.log(editStd);
+    this.emitStdObj.emit(editStd)
+    
    onRemove(id: string){
     console.log(id);
     this.emitRemoveId.emit(id)

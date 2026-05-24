@@ -2,7 +2,11 @@
     <mat-card>
     <div class="card">
     <div class="card-body">
-        
+
+        <h2 [ngStyle]="{
+     color : isInEditMode ? 'orange' : 'green'}" [style.text-align]="'center'">
+     {{isInEditMode? 'Update Student': 'Add Student'}}</h2>
+
         <div class="form-group">
             <label for="fname">First Name</label>
             <input #fname type="text" class="form-control">
@@ -28,9 +32,12 @@
         </div>
         <button
         (click)="onStdAdd()"
+        *ngIf="!isInEditMode"
         mat-raised-button color="primary" class="btn-block">Add Student</button>
         
         <button
+        (click)="onUpdate()"
+        *ngIf="isInEditMode"
         mat-raised-button color="warn" class="btn-block">Update Student</button>
 
     </div>
