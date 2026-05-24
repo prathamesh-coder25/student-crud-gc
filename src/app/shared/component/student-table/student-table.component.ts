@@ -10,6 +10,7 @@ export class StudentTableComponent implements OnInit {
   @Input() getStds !: Array<Istd>
   @Output() emitStdObj : EventEmitter<Istd> = new EventEmitter<Istd>()
 
+@Output() emitRemoveId : EventEmitter<string>= new EventEmitter<string>()
 
   constructor() { }
 
@@ -25,5 +26,8 @@ export class StudentTableComponent implements OnInit {
     console.log(editStd);
     this.emitStdObj.emit(editStd)
     
+   onRemove(id: string){
+    console.log(id);
+    this.emitRemoveId.emit(id)
   }
 }

@@ -10,6 +10,7 @@
     <div class="col-md-8">
         <app-student-table
         (emitStdObj)="getEditObj($event)"
+        (emitRemoveId)="getRemoveId($event)"
         [getStds]="stdArr"
         ></app-student-table>
     </div>
