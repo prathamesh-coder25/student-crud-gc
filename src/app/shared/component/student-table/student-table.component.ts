@@ -25,4 +25,10 @@ export class StudentTableComponent implements OnInit {
     console.log(id);
     this.emitRemoveId.emit(id)
   }
+
+   onStdEdit(editStd: Istd){
+    console.log(editStd);
+    this.emitStdObj.emit(editStd)
+    
+  }
 }

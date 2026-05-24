@@ -30,7 +30,7 @@ export class StudentDashboardComponent implements OnInit {
       fname: 'swan',
       lname: 'warn',
       email: 'swan@gmail.com',
-      contact: 1234567890,
+      contact: 1234567890, 
       stdId: '123',
       isActive: true
     },
