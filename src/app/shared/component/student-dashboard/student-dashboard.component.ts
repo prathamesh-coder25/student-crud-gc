@@ -57,7 +57,7 @@ export class StudentDashboardComponent implements OnInit {
     let getIndex = this.stdArr.findIndex(s => s.stdId === id)
     this.stdArr.splice(getIndex, 1)
   }
-}
+
    getNewStd(newStd: Istd) {
     this.stdArr.push(newStd)
     this._SnackBarService.openSnackBar(`The New Student ${newStd.fname} added Successfully !!!`)
