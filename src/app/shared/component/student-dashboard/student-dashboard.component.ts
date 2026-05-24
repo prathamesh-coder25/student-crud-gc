@@ -44,10 +44,8 @@ export class StudentDashboardComponent implements OnInit {
     }
   ]
 
-  getEditStd !: Istd
-  
+  getEditStd!: Istd
 
-  
   constructor(
     private _SnackBarService: SnackBarService
   ) { }
@@ -55,25 +53,27 @@ export class StudentDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-    getNewStd(newStd: Istd) {
- getRemoveId(id: string) {
+  getRemoveId(id: string) {
     let getIndex = this.stdArr.findIndex(s => s.stdId === id)
     this.stdArr.splice(getIndex, 1)
   }
 
-   getNewStd(newStd: Istd) {
+  getNewStd(newStd: Istd) {
     this.stdArr.push(newStd)
-    this._SnackBarService.openSnackBar(`The New Student ${newStd.fname} added Successfully !!!`)
+    this._SnackBarService.openSnackBar(
+      `The New Student ${newStd.fname} added Successfully !!!`
+    )
   }
 
-     getEditObj(editOBj: Istd) {
-    this.getEditStd = editOBj
+  getEditObj(editObj: Istd) {
+    this.getEditStd = editObj
   }
 
-  getUpdateStd(UpdateObj: Istd) {
-    let getIndex = this.stdArr.findIndex(s => s.stdId === UpdateObj.stdId)
-    this.stdArr[getIndex] = UpdateObj
-    }
+  getUpdateStd(updateObj: Istd) {
+    let getIndex = this.stdArr.findIndex(
+      s => s.stdId === updateObj.stdId
+    )
+    this.stdArr[getIndex] = updateObj
+  }
 
 }
